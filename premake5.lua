@@ -52,8 +52,10 @@ solution "reVC"
 
     includedirs {
        "source",
-       "source/**"
+       "source/**",
+       "source/core"
     }
+
     libdirs {"source"}
     
     configuration "Debug*"
@@ -76,12 +78,9 @@ solution "reVC"
        
         files {
         "source/**.h*",
-        "source/**.c*"
-        }
-        
-        excludes{
-        "source/**/errcom.def", --bugfix for premake5
-        "source/**/errcore.def"
+        "source/**.c*",
+        "source/core/**.h*",
+        "source/core/**.c*"
         }
         
 

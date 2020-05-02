@@ -1,8 +1,5 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
-#include <windows.h>
-#include <iostream>
-
-//void InjectHooksMain(void);
+#include "dllmain.h"
 
 void DisplayConsole(void)
 {
@@ -15,6 +12,12 @@ void DisplayConsole(void)
     }
 }
 
+void InjectHooksMain(void)
+{
+    printf("Started hooking functions\n");
+    CWanted::InjectHooks();
+}
+
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)
 {
     switch (ul_reason_for_call)
@@ -22,7 +25,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
     case DLL_PROCESS_ATTACH:
     {
         DisplayConsole();
-        //InjectHooksMain();
+        InjectHooksMain();
         break;
     }
     case DLL_THREAD_ATTACH:
